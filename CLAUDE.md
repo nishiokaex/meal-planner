@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-このファイルは、このリポジトリ内のコードを操作する際に Claude Code (claude.ai/code) にガイダンスを提供します。
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## 開発日誌を作成すること
 
@@ -16,31 +16,58 @@
 
 ## 開発コマンド
 
-- `npm run web` - Expo Web開発サーバーを起動
+- `npm start` - Expo 開発サーバーを起動
+- `npm run android` - Android 開発サーバーを起動
+- `npm run ios` - iOS 開発サーバーを起動  
+- `npm run web` - Expo Web 開発サーバーを起動
+
+## アプリケーション概要
+
+献立スワイプアプリ - 過去の料理履歴から最適な献立を提案し、フラッシュカード形式のUIで献立を決定できるアプリ
+
+### 主要機能
+- 献立履歴管理
+- 献立提案（カードをスワイプで切り替え）
+- 買い物リスト
 
 ## プロジェクトアーキテクチャ
 
-これは以下の構造を持つExpo React Nativeアプリケーションです：
+Expo React Native アプリケーション：
 
-- **App.js** - 基本的なReact Nativeコンポーネントを含むメインアプリケーションエントリーポイント
+- **App.js** - メインアプリケーションエントリーポイント（現在は基本的なウェルカム画面）
 - **index.js** - Expoアプリ登録エントリーポイント
-- **app.json** - アプリメタデータ、アイコン、プラットフォーム設定を含むExpo設定
-- **assets/** - アプリアイコン、スプラッシュスクリーン、静的アセットを格納
-- **package.json** - Expo ~52.0.46、React 18.3.1、React Native 0.76.9などの依存関係
+- **app.json** - Expo設定（新アーキテクチャ有効、クロスプラットフォーム対応）
+- **assets/** - アプリアイコン、スプラッシュスクリーン格納
 
-### 主要な依存関係
+### 技術スタック
 
-- **Expo SDK ~52.0.46** - コアExpo開発プラットフォーム
-- **react-navigation ^5.0.0** - React Native用ナビゲーションライブラリ
-- **zustand ^5.0.5** - 軽量状態管理ライブラリ
-- **expo-status-bar** - Expoアプリ用ステータスバーコンポーネント
+- **Expo SDK ~52.0.46** - 新アーキテクチャ有効
+- **React 18.3.1 / React Native 0.76.9**
+- **react-navigation ^5.0.0** - ナビゲーション
+- **@playwright/mcp** - テスト（開発依存関係）
 
-### 注意事項
+### 重要な設定
 
-- ドキュメントやソースコード上のコメントは日本語で書く
-- 全体のコードベースを確認して、セキュリティ・パフォーマンス・保守性に優れた設計になっているか確認すること
-- Expoアプリは新しいアーキテクチャが有効（app.jsonで`newArchEnabled: true`）
-- iPadサポート（`supportsTablet: true`）
-- クロスプラットフォームサポート（iOS、Android、Web）が設定済み
-- TypeScript設定は存在しない - JavaScriptのみのプロジェクト
-- プロジェクトルートにlintやテスト設定は見つからない
+- クロスプラットフォーム対応（iOS、Android、Web）
+- iPadサポート有効
+- 新しいReact Nativeアーキテクチャ有効
+- JavaScriptのみのプロジェクト
+
+## 構成管理
+
+- ソースコードはgithubで管理します
+- コミットは、feature/[エンハンス内容] という名前の機能ブランチのみに行う
+
+## 機能開発プロセス
+
+1. feature/[エンハンス内容] という名前の機能ブランチを作成する
+2. 機能を開発する
+3. Web版でビルドして動作確認し、正しく動作するまで修正する
+4. 変更内容をコミットする
+5. ghコマンドでPull Requestを作成する。マージで機能ブランチを削除する設定で作成する。
+
+### 開発ガイドライン
+
+- ドキュメントやコメントは日本語で記述
+- セキュリティ・パフォーマンス・保守性を重視した設計
+- コミットはClaudeシグネチャ抜きで行う
